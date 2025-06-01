@@ -9,28 +9,9 @@ def handle_update(data):
         chat_id = data["message"]["chat"]["id"]
         text = data["message"].get("text", "")
 
-        if text == "/start":
-            reply = "Добро пожаловать в Functional Body Bot 👊"
-            keyboard = {
-                "keyboard": [[{"text": "Мой рацион"}, {"text": "Моя тренировка"}]],
-                "resize_keyboard": True
-            }
-            send_message(chat_id, reply, keyboard)
-        else:
-            reply = "Принято!"
-            send_message(chat_id, reply)
+        reply = "Принято!" if text else "Не понял тебя 🤖"
 
-
-def send_message(chat_id, text, reply_markup=None):
-    payload = {
-        "chat_id": chat_id,
-        "text": text
-    }
-
-    if reply_markup:
-        payload["reply_markup"] = reply_markup
-
-    requests.post(
-        f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-        json=payload
-    )
+        requests.post(
+            f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+            json={"chat_id": chat_id, "text": reply}
+        )
