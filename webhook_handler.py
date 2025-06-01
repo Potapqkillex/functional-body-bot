@@ -1,5 +1,6 @@
 import requests
 from training_logic import parse_training_command
+
 BOT_TOKEN = "7179411906:AAHtkezX3Ng0ko_H8MafcCwHNYQrjunmiv4"
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
@@ -31,7 +32,7 @@ def handle_update(data):
                     [{"text": "Восстановление", "callback_data": "recovery"}],
                     [{"text": "Сон", "callback_data": "sleep"}],
                     [{"text": "Вода", "callback_data": "water"}],
-                    [{"text": "Мотивация", "callback_data": "motivation"}],
+                    [{"text": "Мотивация", "callback_data": "motivation"}]
                 ]
             }
             send_message(chat_id, "Выбери раздел:", reply_markup=keyboard)
@@ -49,8 +50,8 @@ def handle_update(data):
             "recovery": "Раздел 'Восстановление' скоро будет активен.",
             "sleep": "Раздел 'Сон' скоро будет активен.",
             "water": "Раздел 'Вода' скоро будет активен.",
-            "motivation": "Раздел 'Мотивация' скоро будет активен.",
+            "motivation": "Раздел 'Мотивация' скоро будет активен."
         }
 
-        text = responses.get(data, "В разработке...")
+        text = responses.get(data, "В разработке.")
         send_message(chat_id, text)
