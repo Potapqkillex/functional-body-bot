@@ -1,5 +1,5 @@
 import requests
-
+from training_logic import parse_training_command
 BOT_TOKEN = "7179411906:AAHtkezX3Ng0ko_H8MafcCwHNYQrjunmiv4"
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
