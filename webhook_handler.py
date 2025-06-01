@@ -9,7 +9,10 @@ def handle_update(data):
         chat_id = data["message"]["chat"]["id"]
         text = data["message"].get("text", "")
 
-        reply = "Принято!" if text else "Не понял тебя 🤖"
+        if text:
+            reply = "Принято!"
+        else:
+            reply = "Не понял тебя 🤖"
 
         requests.post(
             f"https://api.telegram.org/bot{TOKEN}/sendMessage",
