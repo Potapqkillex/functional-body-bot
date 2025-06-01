@@ -1,4 +1,5 @@
 from flask import Flask, request
+from webhook_handler import handle_update  # 👈 добавлено
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def index():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
-    print(f"Received update: {data}")
+    handle_update(data)  # 👈 заменили print
     return '', 200
 
 if __name__ == '__main__':
